@@ -1,0 +1,16 @@
+#!/bin/sh
+# Disable screen blanking
+xset s off -dpms
+# Use caps lock to switch to 1st layout, shift+caps to switch to 2nd layout,
+# ctrl+alt+backspace to close X session. Replace "us,ru" to required keyboard layout.
+#setxkbmap -layout us,ru -option "grp:shift_caps_switch,grp_led:caps,compose:ralt,terminate:ctrl_alt_bksp"
+xrdb -merge ~/.Xresources
+#hsetroot -fill ~/.wallpaper.jpg
+pcmanfm --desktop &
+compton &
+xbanish &
+#clipit -n
+#osdmixer d d d d &
+# Tray applications
+sleep 3 && sbxkb &
+

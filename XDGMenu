@@ -1,0 +1,214 @@
+DestroyMenu "xdgmenu"
+AddToMenu "xdgmenu"
++ "Accessories" Popup "Accessories"
++ "Development" Popup "Development"
++ "Education" Popup "Education"
++ "Games" Popup "Games"
++ "Graphics" Popup "Graphics"
++ "Multimedia" Popup "Multimedia"
++ "Network" Popup "Network"
++ "Office" Popup "Office"
++ "Other" Popup "Other"
++ "Settings" Popup "Settings"
++ "System" Popup "System"
+
+DestroyMenu "Accessories"
+AddToMenu "Accessories"
++ "Accessories" Title
++ "Android File Transfer (MTP)" Exec android-file-transfer
++ "Application Finder" Exec xfce4-appfinder
++ "Ark" Exec ark 
++ "Catarina" Exec catarina
++ "Character Map" Exec gucharmap
++ "Document Viewer" Exec xreader 
++ "Files" Exec nautilus --new-window 
++ "Fonts" Exec gnome-font-viewer 
++ "Mousepad" Exec mousepad 
++ "Screenshot" Exec xfce4-screenshooter
++ "SimDock" Exec simdock
++ "Ulauncher" Exec env GDK_BACKEND=x11 /usr/local/bin/ulauncher --hide-window
++ "Worker" Exec worker
++ "Xpad" Exec xpad
++ "compton" Exec compton
++ "nitrogen" Exec nitrogen
+
+DestroyMenu "Development"
+AddToMenu "Development"
++ "Development" Title
++ "Apache NetBeans" Exec netbeans
++ "Arduino" Exec arduino
++ "Bluefish Editor" Exec bluefish 
++ "Elementary Perf" Exec elementary_perf
++ "Elementary Test" Exec elementary_test
++ "Emacs" Exec emacs 
++ "GTK Demo" Exec gtk4-demo
++ "Glade" Exec glade 
++ "Icon Browser" Exec gtk4-icon-browser
++ "Print Editor" Exec gtk4-print-editor 
++ "Qt 5 Assistant" Exec /usr/local/lib/qt5/bin/assistant
++ "Qt 5 Designer" Exec /usr/local/lib/qt5/bin/designer
++ "Widget Factory" Exec gtk4-widget-factory
+
+DestroyMenu "Education"
+AddToMenu "Education"
++ "Education" Title
++ "KDE Marble" Exec marble 
++ "Marble" Exec marble-qt 
++ "Stellarium" Exec stellarium --startup-script=
++ "Xiphos Bible Guide" Exec xiphos
+
+DestroyMenu "Games"
+AddToMenu "Games"
++ "Games" Title
++ "BZFlag" Exec bzflag
++ "Endless Sky" Exec endless-sky
++ "FreeOrion" Exec freeorion
++ "Freeciv (Qt)" Exec freeciv-qt
++ "Freeciv Ruleset Editor" Exec freeciv-ruledit
++ "Freeciv modpack installer (Qt)" Exec freeciv-mp-qt
++ "Freeciv server" Exec xterm -e freeciv-server
++ "Fuse" Exec fuse 
++ "GZDoom" Exec gzdoom
++ "Hatari" Exec hatari 
++ "Hatari UI" Exec hatariui
++ "Kobo Deluxe" Exec kobodl
++ "Lunar Lander" Exec lander
++ "OpenTTD" Exec openttd
++ "XGalaga++" Exec xgalaga++
++ "XInvaders" Exec xinvaders
++ "XInvaders 3D" Exec xinv3d
++ "XScavenger" Exec scavenger
+
+DestroyMenu "Graphics"
+AddToMenu "Graphics"
++ "Graphics" Title
++ "Blender" Exec blender 
++ "Inkscape" Exec inkscape 
++ "Ristretto Image Viewer" Exec ristretto 
++ "XDvi" Exec xdvi 
++ "xpdf" Exec xpdf 
+
+DestroyMenu "Multimedia"
+AddToMenu "Multimedia"
++ "Multimedia" Title
++ "Advanced Gtk+ Sequencer" Exec gsequencer --filename 
++ "Ardour" Exec ardour6
++ "Ario" Exec ario
++ "Audacious" Exec audacious 
++ "Audacity" Exec env UBUNTU_MENUPROXY=0 audacity 
++ "Brasero" Exec brasero 
++ "Cadence" Exec cadence
++ "Calf Plugin Pack for JACK" Exec calfjackhost
++ "Cantata" Exec cantata 
++ "Carla" Exec carla 
++ "Carla Control" Exec carla-control 
++ "Catia" Exec catia
++ "Claudia" Exec claudia
++ "Claudia Launcher" Exec claudia-launcher
++ "CsoundQt" Exec csoundqt 
++ "DIN Is Noise" Exec din
++ "Exaile" Exec exaile --quiet 
++ "Geonkick" Exec env UBUNTU_MENUPROXY=0 geonkick 
++ "Grip" Exec grip
++ "MIDI Player Pro" Exec midipp
++ "MPlayer" Exec gmplayer
++ "OBS Studio" Exec obs
++ "Parole Media Player" Exec parole 
++ "Power Station Industrializer" Exec psindustrializer
++ "PulseAudio Volume Control" Exec pavucontrol
++ "QjackCtl" Exec qjackctl
++ "Quick Audio Sonar" Exec qaudiosonar
++ "Rosegarden" Exec rosegarden 
++ "Shotcut" Exec shotcut 
++ "Strawberry" Exec strawberry 
++ "SuperCollider IDE" Exec scide
++ "Sweep" Exec sweep
++ "VLC media player" Exec /usr/local/bin/vlc --started-from-file 
++ "Videos" Exec totem 
++ "Xfburn" Exec xfburn
++ "drumkv1" Exec drumkv1_jack
++ "mpv Media Player" Exec mpv --player-operation-mode=pseudo-gui -- 
++ "padthv1" Exec padthv1_jack
++ "synthv1" Exec synthv1_jack
+
+DestroyMenu "Network"
+AddToMenu "Network"
++ "Network" Title
++ "Firefox Web Browser" Exec firefox 
++ "NetSurf Web Browser" Exec netsurf-gtk 
++ "Otter Browser" Exec otter-browser 
++ "Telegram Desktop" Exec telegram-desktop -- 
++ "Web" Exec epiphany 
++ "WiFi Networks Manager" Exec wifimgr 
++ "qBittorrent" Exec qbittorrent 
++ "qutebrowser" Exec qutebrowser --untrusted-args 
+
+DestroyMenu "Office"
+AddToMenu "Office"
++ "Office" Title
++ "Bitcoin Core" Exec bitcoin-qt 
++ "Dictionary" Exec xfce4-dict
++ "LyX" Exec lyx 
++ "TeXstudio" Exec texstudio 
+
+DestroyMenu "Other"
+AddToMenu "Other"
++ "Other" Title
++ "7-Zip File Manager" Exec env WINEPREFIX="/home/studio/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/studio/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/7-Zip/7-Zip\\ File\\ Manager.lnk
++ "7-Zip Help" Exec env WINEPREFIX="/home/studio/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/studio/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/7-Zip/7-Zip\\ Help.lnk
++ "E16" Exec e16
++ "Launch Sid Meier's Civilization 4" Exec cd /home/studio/.wine/dosdevices/c:/users/studio/Application Data/Firaxis Games/Sid Meier's Civilization 4 ; env WINEPREFIX="/home/studio/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/studio/.wine/dosdevices/c:/users/studio/Start\\ Menu/Programs/Firaxis\\ Games/Sid\\ Meier\\'s\\ Civilization\\ 4/Launch\\ Sid\\ Meier\\'s\\ Civilization\\ 4.lnk
++ "VICE (vsid)" Exec /usr/local/bin/vsid
++ "VICE (x128)" Exec /usr/local/bin/x128
++ "VICE (x64)" Exec /usr/local/bin/x64
++ "VICE (x64dtv)" Exec /usr/local/bin/x64dtv
++ "VICE (x64sc)" Exec /usr/local/bin/x64sc
++ "VICE (xcbm2)" Exec /usr/local/bin/xcbm2
++ "VICE (xcbm5x0)" Exec /usr/local/bin/xcbm5x0
++ "VICE (xpet)" Exec /usr/local/bin/xpet
++ "VICE (xplus4)" Exec /usr/local/bin/xplus4
++ "VICE (xscpu64)" Exec /usr/local/bin/xscpu64
++ "VICE (xvic)" Exec /usr/local/bin/xvic
++ "vosyr" Exec cd /home/studio/.wine/dosdevices/c:/Program Files (x86)/vosyr/resources ; env WINEPREFIX="/home/studio/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/studio/.wine/dosdevices/c:/users/studio/Start\\ Menu/Programs/vosyr.lnk
+
+DestroyMenu "Settings"
+AddToMenu "Settings"
++ "Settings" Title
++ "ARandR" Exec arandr
++ "Customize Look and Feel" Exec lxappearance
++ "Desktop Preferences" Exec pcmanfm --desktop-pref
++ "Elementary Configuration" Exec elementary_config
++ "File Manager Settings" Exec thunar-settings
++ "Fingerprint Password Settings" Exec enlightenment_fprint
++ "LightDM GTK+ Greeter settings" Exec lightdm-gtk-greeter-settings-pkexec
++ "Palette Editor" Exec enlightenment_paledit
++ "Power Manager" Exec xfce4-power-manager-settings
++ "Qt5 Settings" Exec qt5ct
++ "SCIM Input Method Setup" Exec scim-setup
++ "Screensaver" Exec xscreensaver-demo
++ "Text Editor Settings" Exec mousepad --preferences
++ "XScreenSaver Blank" Exec /usr/local/bin/xscreensaver-command -activate
++ "XScreenSaver Lock" Exec /usr/local/bin/xscreensaver-command -lock
++ "XScreenSaver Start" Exec /usr/local/bin/xscreensaver
++ "XScreenSaver Stop" Exec /usr/local/bin/xscreensaver-command -exit
++ "Xfce Terminal Settings" Exec xfce4-terminal --preferences
++ "Xfdashboard settings" Exec /usr/local/bin/xfdashboard-settings
+
+DestroyMenu "System"
+AddToMenu "System"
++ "System" Title
++ "Bulk Rename" Exec thunar --bulk-rename 
++ "Cool Retro Term" Exec cool-retro-term
++ "DOSBox" Exec dosbox
++ "File Manager PCManFM" Exec pcmanfm 
++ "Gigolo" Exec gigolo
++ "Htop" Exec xterm -e htop
++ "Midnight Commander" Exec xterm -e mc
++ "Task Manager" Exec xfce4-taskmanager
++ "Terminology" Exec terminology
++ "Thunar File Manager" Exec thunar 
++ "XOsview" Exec xosview
++ "XTerm" Exec xterm
++ "Xfce Terminal" Exec xfce4-terminal
++ "Xfdashboard" Exec /usr/local/bin/xfdashboard
+
