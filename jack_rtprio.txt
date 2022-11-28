@@ -1,0 +1,14 @@
+sysctl hw.snd.default_unit=1
+
+Simple MAC framework policy to manage access for setting realtime priorities by
+selected GID.Running kldload mac_rtprio.ko to load the kernel module. The load
+action require root permissions. Set GID that should be able to change realtime
+priorities: 
+doas kldload mac_rtprio.ko
+doas sysctl security.mac.rtprio.gid=1001
+and enable enforcing:
+doas sysctl security.mac.rtprio.enabled=1
+
+jackd -t 200 -p 2048 -r -d oss -n 2 -r 48000 -p 1024
+Midi:
+jack_umidi -d /dev/umidi0.0 -B

@@ -1,0 +1,58 @@
+doas service hcsecd onestart
+doas service bluetooth start ubt0
+hccontrol -n ubt0hci inquiry
+ hccontrol -n ubt0hci remote_name_request eb:06:ef:4a:03:30
+ hccontrol -n ubt0hci create_connection eb:06:ef:4a:03:30
+doas hccontrol -n ubt0hci create_connection eb:06:ef:4a:03:30
+virtual_oss -T /dev/sndstat -S -a o,-4 -C 2 -c 2 -r 44100 -b 16 -s 1024 -R /dev/dsp0 -P /dev/bluetooth/headphones -d dsp -t vdsp.ctl
+
+
+Let's explain a little some of the meaning of the above command:
+- I wanted this virtual device to be exposed to other apps, so install entry in /dev/sndstat. ( -T /dev/sndstat)
+- Enabled automatic resampling to fix bad sound quality when playing audio with a different sample-rate than default. ( -S)
+- The default volume was too high so I set a negative output amplification. ( -a o,-4)
+- I chose a sample rate of 44100 Hz but you can use 48000 Hz instead if that's better for your hardware. ( -r 44100)
+- I wanted to be able to use my laptop's internal mic simultaneously while using my headphones. ( -R /dev/dsp0)
+- You can disable the recording device by setting "-R /dev/null" instead.
+
+
+[sndio]
+# To fix applications that use sndio as backend (e.g. Chromium), you need to enable the sndiod service:
+sysrc sndiod_enable=YES
+service sndiod start
+
+[Pulseaudio]
+# To fix the ones that use a pulseaudio backend (e.g. Firefox and linux Brave), recording the sound output and immediately redirecting it to /dev/dsp acts as a workaround:
+pacat --record -d oss_output.dsp0.monitor > /dev/dsp & # It's the only solution I could figure out and it's not perfect, as a very tiny delay can be noticed.
+# Also you'd want to mute your computer speakers to avoid hearing double:
+mixer pcm 0 # Remember to set it back to 100 after disconnecting your headphones, or you won't hear anything.
+# Depending on your particular case, you may need to replace "oss_output.dsp0.monitor" by a different source-output. To list the ones available use:
+pacmd list-sources | grep monitor
+
+[OpenAL]
+# Sadly, I haven't found yet a workaround to hear sound from Wine games and programs.
+
+
+# Finally, I created a little script to automate the audio output device switching between Bluetooth headphones and the built-in speakers:
+Code:
+
+#!/bin/sh
+
+if [ "$(cat /dev/sndstat | grep 'Virtual OSS')" = "dsp: <Virtual OSS> (play/rec)" ]; then
+ killall pacat ; mixer pcm 100 ; sudo /usr/bin/killall virtual_oss ; sudo /sbin/sysctl hw.snd.basename_clone=1 ; notify-send --app-name=Bluetooth --icon=bluetooth -t 5000 'Bluetooth sound device disconnected'
+else
+ notify-send --app-name=Bluetooth --icon=bluetooth -t 5000 'Connecting Bluetooth sound device...'
+ sudo virtual_oss -T /dev/sndstat -S -a o,-4 -C 2 -c 2 -r 44100 -b 16 -s 1024 -R /dev/dsp0 -P /dev/bluetooth/headphones -d dsp -t vdsp.ctl & sleep 5 && mixer pcm 0 ; pacat --record -d oss_output.dsp0.monitor > /dev/dsp &
+fi
+
+
+*Note: This script is meant to be run as normal user. Remember to make it executable (chmod +x). Also I suggest to add the commands that need "sudo" to /usr/local/etc/sudoers to allow them running without the need of entering your password. At least I did that.
+You can then create a keyboard shortcut to run it easily.
+You may also want to increase the sleep time to 15 seconds or more if your device takes too long to connect. I say this because it's important to run the pacat command AFTER the device is correctly paired, otherwise the sound will be out of sync. In that case a simple killall pacat ; pacat --record -d oss_output.dsp0.monitor > /dev/dsp & should suffice to set it right anyway.
+
+
+*--------------*-------------*
+
+virtual_oss -B -C 2 -c 2 -r 48000 -b 16 -s 768 -R /dev/null -P /dev/bluetooth/Xpecial_Audio -d dsp
+
+doas ./virtual_oss -C 2 -c 2 -r 44100 -b 16 -s 1024 -R /dev/null -P /dev/bluetooth/douk -d dsp
